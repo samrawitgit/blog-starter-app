@@ -13,13 +13,9 @@ on:
 
 jobs:
   hello-world:
-    if: github.event.input.feature == 'hello-world'
+    if: github.event.inputs.feature == 'hello-world'
     uses: ./.github/workflows/hello-world.yml
   
   build-test-deploy:
-    permissions:
-     contents: write
-     pages: write
-     id-token: write
-    if: github.event.input.feature == 'build-test-deploy'
+    if: github.event.inputs.feature == 'build-test-deploy'
     uses: ./.github/workflows/build-test-deploy.yml
