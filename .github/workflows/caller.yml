@@ -1,0 +1,20 @@
+name: MyBlog Caller Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      feature:
+        description: "Which action to invoke"
+        required: true
+        type: choice
+        options:
+          - hello-world
+          - build-test-deploy
+
+jobs:
+  hello-world:
+    if: github.event.input.feature == 'hello-world'
+    uses: ./.github/workflows/hello-world.yml
+  build-test-deploy:
+    if: github.event.input.feature == 'build-test-deploy'
+    uses: ./.github/workflows/build-test-deploy.yml
