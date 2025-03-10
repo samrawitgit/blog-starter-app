@@ -17,5 +17,9 @@ jobs:
     uses: ./.github/workflows/hello-world.yml
   
   build-test-deploy:
+    permissions:  # gatekeeper: determins what the workflow is allowed to do
+      contents: write
+      pages: write
+      id-token: write
     if: github.event.inputs.feature == 'build-test-deploy'
     uses: ./.github/workflows/build-test-deploy.yml
