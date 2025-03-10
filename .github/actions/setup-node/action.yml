@@ -11,6 +11,10 @@ inputs:
     description: 'Cache to use (npm/yarn)'
     required: false
     default: 'npm'
+  clean-install:
+    description: 'Whether to perform a clean install'
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
@@ -25,9 +29,10 @@ runs:
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
-        with:
-          node-version: "${{ inputs.node-version }}"
-          cache: "${{ inputs.cache }}"
+      with:
+        node-version: "${{ inputs.node-version }}"
+        cache: "${{ inputs.cache }}"
+
     - name: Install dependencies
       shell: bash
       run: |
